@@ -12,6 +12,7 @@ class wechatController extends Controller
     {
         define('TOKEN','U6PfIoiO9O9B5as8B8pZ59oa5454o558');
         $validate = isset($_GET["echostr"]) ? $_GET['echostr'] : '';
+        file_put_contents('1111.txt', '提交信息'. $validate, FILE_APPEND);
 
         //valid signature , option
         if($validate && $this->checkSignature()){
@@ -65,7 +66,7 @@ class wechatController extends Controller
         if (!defined("TOKEN")) {
             throw new Exception('TOKEN is not defined!');
         }
-        
+
         $signature = $_GET["signature"];
         $timestamp = $_GET["timestamp"];
         $nonce = $_GET["nonce"];
