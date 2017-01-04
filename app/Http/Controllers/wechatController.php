@@ -8,11 +8,11 @@ class wechatController extends Controller
 {
 	const TOKEN = 'U6PfIoiO9O9B5as8B8pZ59oa5454o558';
 	
-    public function serve()
+    public function serve(Request $request)
     {
         define('TOKEN','U6PfIoiO9O9B5as8B8pZ59oa5454o558');
-        $validate = isset($_GET["echostr"]) ? $_GET['echostr'] : '';
-        file_put_contents('1111.txt', '提交信息'. $validate, FILE_APPEND);
+        $validate = $request->input('echostr');
+        file_put_contents('1111.txt', '提交信息'. $validate . '\n', FILE_APPEND);
 
         //valid signature , option
         if($validate && $this->checkSignature()){
