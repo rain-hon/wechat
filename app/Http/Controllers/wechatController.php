@@ -8,7 +8,7 @@ class wechatController extends Controller
 {
 	const TOKEN = 'U6PfIoiO9O9B5as8B8pZ59oa5454o558';
 	
-    public function server()
+    public function serve()
     {
         define('TOKEN','U6PfIoiO9O9B5as8B8pZ59oa5454o558');
         $echoStr = $_GET["echostr"];
