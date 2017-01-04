@@ -11,11 +11,11 @@ class wechatController extends Controller
     public function serve()
     {
         define('TOKEN','U6PfIoiO9O9B5as8B8pZ59oa5454o558');
-        $echoStr = $_GET["echostr"];
+        $validate = isset($_GET["echostr"]) ? $_GET['echostr'] : '';
 
         //valid signature , option
-        if($this->checkSignature()){
-        	echo $echoStr;
+        if($validate && $this->checkSignature()){
+        	echo $validate;
         	exit;
         }
     }
