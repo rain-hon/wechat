@@ -13,15 +13,17 @@ class wechatController extends Controller
     {
         $id = $request->input('id');
         $account = Account::where('id', $id)->first();
-
-        print_r($account);
-        define('TOKEN','U6PfIoiO9O9B5as8B8pZ59oa5454o558');
-        $validate = $request->input('echostr');
+        define('TOKEN',$account->token);
 
         //valid signature , option
-        if($validate && $this->checkSignature()){
-        	echo $validate;
+        if(!$this->checkSignature()){
+            exit;
+        }
+        if($echostr = $request->input('echostr')){
+        	echo $echostr;
         	exit;
+        }else{
+            print_r($request->all());
         }
     }
 
