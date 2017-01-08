@@ -15,13 +15,13 @@ class wechatController extends Controller
 
 
         if($echostr = $request->input('echostr')){
-            file_put_contents('123', var_export($request->all() . '有echostr', true), FILE_APPEND);
+            file_put_contents('123', var_export($request->all(), true). '有echostr', FILE_APPEND);
             if($this->checkSignature()){
                 echo $echostr;
             }
         	exit;
         }else{
-            file_put_contents('123', var_export($request->all(). '无echostr', true), FILE_APPEND);
+            file_put_contents('123', var_export($request->all(), true). '无echostr', FILE_APPEND);
         }
     }
 
