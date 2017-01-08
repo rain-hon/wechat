@@ -12,7 +12,6 @@ class wechatController extends Controller
     {
         define('TOKEN','U6PfIoiO9O9B5as8B8pZ59oa5454o558');
         $validate = $request->input('echostr');
-        file_put_contents('1111.txt', '提交信息'. $validate . '\n', FILE_APPEND);
 
         //valid signature , option
         if($validate && $this->checkSignature()){
