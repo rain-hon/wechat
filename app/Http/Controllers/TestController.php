@@ -8,6 +8,7 @@ class TestController extends Controller
 {
     //
     public function showPic(Request $request){
-        print_r($request->all());
+        $text = $request->input('t');
+        echo gd_info();
     }
 }
