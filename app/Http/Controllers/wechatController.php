@@ -20,7 +20,7 @@ class wechatController extends Controller
             }
         	exit;
         }else{
-            print_r($request->all());
+            file_put_contents('123', var_export($request->all(), true), FILE_APPEND);
         }
     }
 
