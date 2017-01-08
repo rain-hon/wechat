@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Account;
 
 class wechatController extends Controller
 {
@@ -10,6 +11,10 @@ class wechatController extends Controller
 	
     public function serve(Request $request)
     {
+        $id = $request->input('id');
+        $account = Account::where('id', $id)->first();
+
+        print_r($account);
         define('TOKEN','U6PfIoiO9O9B5as8B8pZ59oa5454o558');
         $validate = $request->input('echostr');
 
@@ -23,7 +28,7 @@ class wechatController extends Controller
     public function responseMsg()
     {
 		//get post data, May be due to the different environments
-		$postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
+		$postStr = file_get_contents("php://input");
 
       	//extract post data
 		if (!empty($postStr)){
