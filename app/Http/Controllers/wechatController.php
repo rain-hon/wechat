@@ -21,6 +21,7 @@ class wechatController extends Controller
             }
         	exit;
         }else{
+            $this->responseMsg();
             file_put_contents('123', var_export($request->all(), true). '无echostr', FILE_APPEND);
         }
     }
