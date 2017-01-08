@@ -7,20 +7,17 @@ use App\Account;
 
 class wechatController extends Controller
 {
-	const TOKEN = 'U6PfIoiO9O9B5as8B8pZ59oa5454o558';
-	
     public function serve(Request $request)
     {
         $id = $request->input('id');
         $account = Account::where('id', $id)->first();
         define('TOKEN',$account->token);
 
-        //valid signature , option
-        if(!$this->checkSignature()){
-            exit;
-        }
+
         if($echostr = $request->input('echostr')){
-        	echo $echostr;
+            if($this->checkSignature()){
+                echo $echostr;
+            }
         	exit;
         }else{
             print_r($request->all());
